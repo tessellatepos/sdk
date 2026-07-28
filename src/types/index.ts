@@ -22,3 +22,5 @@ export type {
     Tender,
     Order,
 } from "./order.js";
+
+export type { CheckoutMethod, CheckoutDetails } from "./checkout.js";

@@ -17,6 +17,8 @@ export type {
     Discount,
     Tender,
     Order,
+    CheckoutMethod,
+    CheckoutDetails,
 } from "./types/index.js";
 
 // Square adapter
