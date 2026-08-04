@@ -45,10 +45,8 @@ export interface Item {
     variations: ItemVariation[] | null;
     categories?: ItemCategory[];
     isArchived?: boolean | null;
-    // Derived at read time from the catalog-item-locations table, not stored
-    // directly on the item row.
     locationIds?: string[] | null;
-    imageURLs?: string[] | null;
+    image?: string | null;
 }
 
 export interface ItemCatalog {
