@@ -31,4 +31,5 @@ export type {
 export { Cart } from "./core/cart.js";
 
 // Utilities
-export { bigintReplacer } from "./util/bigintReplacer.js";
+export { bigintReplacer, stripBigints } from "./util/bigintReplacer.js";
+export { toBigIntAmount, convertCentsToDollars } from "./util/money.js";
