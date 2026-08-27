@@ -24,3 +24,5 @@ export type {
 } from "./order.js";
 
 export type { CheckoutMethod, CheckoutDetails } from "./checkout.js";
+
+export type { DeviceType, IConfigDevice } from "./device.js";

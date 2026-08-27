@@ -19,6 +19,8 @@ export type {
     Order,
     CheckoutMethod,
     CheckoutDetails,
+    DeviceType,
+    IConfigDevice,
 } from "./types/index.js";
 
 // Square adapter
