@@ -11,12 +11,15 @@ jobs:
         permissions:
             contents: read
             packages: write
+        env:
+            HUSKY: 0
         steps:
             - uses: actions/checkout@v7
             - uses: actions/setup-node@v7
               with:
                   node-version: 25.9
                   registry-url: https://npm.pkg.github.com/
+                  scope: "@tessellatepos"
             - run: npm ci --include=dev
             - run: npm run build
             - run: |
