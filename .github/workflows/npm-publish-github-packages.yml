@@ -15,16 +15,16 @@ jobs:
             HUSKY: 0
         steps:
             - uses: actions/checkout@v7
-            - uses: actions/setup-node@v7
+            - uses: pnpm/setup@v2
               with:
-                  node-version: 25.9
-                  registry-url: https://npm.pkg.github.com/
-                  scope: "@tessellatepos"
-            - run: npm ci --include=dev
-            - run: npm run build
+                  runtime: node@25.9
+                  require-lockfile: true
+                  install: false
+                  cache: true
+            - run: pnpm run build
             - run: |
                   echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
                   echo "@tessellatepos:registry=https://npm.pkg.github.com/" >> .npmrc
-            - run: npm publish
+            - run: pnpm publish --no-git-checks
               env:
                   NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
