@@ -1,4 +1,4 @@
-import type { Money } from "../types/money.js";
+import type { CurrencyCode, Money } from "../types/money.js";
 
 export const bigintReplacer = (_: string, v: unknown) =>
     typeof v === "bigint" ? v.toString() : v;
@@ -29,7 +29,7 @@ export function parseMoney(raw: unknown): Money | undefined {
     if (!raw || typeof raw !== "object") return undefined;
     const { amount, currency } = raw as {
         amount?: string | number;
-        currency?: string;
+        currency?: CurrencyCode;
     };
     if (amount === undefined || currency === undefined) return undefined;
     return { amount: BigInt(amount), currency };

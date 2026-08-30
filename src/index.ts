@@ -23,6 +23,10 @@ export type {
     IConfigDevice,
 } from "./types/index.js";
 
+export {
+    CurrencyCode
+} from "./types/index.js"
+
 // Square adapter
 export type {
     squareHelperItemVariation,

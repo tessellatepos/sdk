@@ -1,4 +1,5 @@
 export type { Money } from "./money.js";
+export { CurrencyCode } from "./money.js";
 
 export type {
     ItemSummary,
