@@ -22,6 +22,7 @@ jobs:
                   require-lockfile: true
                   install: false
                   cache: true
+            - run: pnpm install --frozen-lockfile
             - run: pnpm run build
             - run: |
                   echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
