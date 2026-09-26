@@ -29,3 +29,17 @@ export function convertCentsToDollars(cents: MoneyAmount): string {
     const dollarsPart = s.slice(0, -2) || "0";
     return `${negative ? "-" : ""}${dollarsPart}.${centsPart}`;
 }
+
+/**
+ * Parses a dollars-and-cents string (e.g. "10.5", "10.50", "10") into a
+ * cents amount, e.g. "10.5" -> 1050n. Returns null if the input isn't a
+ * valid non-negative dollar amount.
+ * @param dollars the dollar amount as entered by a user
+ * @returns the amount in cents, or null if the input is invalid
+ */
+export function convertDollarsToCents(dollars: string): bigint | null {
+    const trimmed = dollars.trim();
+    if (!/^\d+(\.\d{1,2})?$/.test(trimmed)) return null;
+    const [dollarsPart, centsPart = ""] = trimmed.split(".");
+    return BigInt(dollarsPart) * 100n + BigInt(centsPart.padEnd(2, "0"));
+}

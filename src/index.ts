@@ -34,4 +34,8 @@ export {
     stripBigints,
     parseMoney,
 } from "./util/bigintReplacer.js";
-export { toBigIntAmount, convertCentsToDollars } from "./util/money.js";
+export {
+    toBigIntAmount,
+    convertCentsToDollars,
+    convertDollarsToCents,
+} from "./util/money.js";
