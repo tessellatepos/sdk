@@ -23,15 +23,7 @@ export type {
     IConfigDevice,
 } from "./types/index.js";
 
-export {
-    CurrencyCode
-} from "./types/index.js"
-
-// Square adapter
-export type {
-    squareHelperItemVariation,
-    squareHelperCategory,
-} from "./adapters/square/index.js";
+export { CurrencyCode } from "./types/index.js";
 
 // Core
 export { Cart } from "./core/cart.js";
