@@ -11,9 +11,9 @@ export const bigintReplacer = (_: string, v: unknown) =>
  * @param value the value to strip bigints from
  * @returns a deep copy of value with every bigint replaced by its string form
  */
-export function stripBigints<T>(value: T): T {
+export function stripBigints<T>(value: T): T | null {
     if (value === undefined) {
-        return null as T;
+        return null;
     }
     return JSON.parse(JSON.stringify(value, bigintReplacer));
 }
@@ -32,5 +32,9 @@ export function parseMoney(raw: unknown): Money | undefined {
         currency?: CurrencyCode;
     };
     if (amount === undefined || currency === undefined) return undefined;
-    return { amount: BigInt(amount), currency };
+    try {
+        return { amount: BigInt(amount), currency };
+    } catch {
+        return undefined;
+    }
 }
