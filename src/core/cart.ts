@@ -9,13 +9,29 @@ export class Cart {
         this.total = 0n;
     }
 
+    private getItemKey(item: CartItem): string {
+        return item.id ?? item.itemId ?? "";
+    }
+
     public clearCart() {
         this.items = [];
         this.total = 0n;
     }
 
     public getItems() {
-        return structuredClone(this.items);
+        return this.items.map((item) => ({
+            ...item,
+            priceMoney: item.priceMoney ? { ...item.priceMoney } : undefined,
+            parent: item.parent ? { ...item.parent } : undefined,
+            locationOverrides: item.locationOverrides
+                ? item.locationOverrides.map((o) => ({
+                      ...o,
+                      priceMoney: o.priceMoney
+                          ? { ...o.priceMoney }
+                          : undefined,
+                  }))
+                : undefined,
+        })) as CartItem[];
     }
 
     public getTotal() {
@@ -23,65 +39,63 @@ export class Cart {
     }
 
     public addQuantity(item: CartItem) {
-        // console.log("add quantity");
+        const key = this.getItemKey(item);
         const existingItem = this.items.find(
-            (cartItem) => cartItem.itemId === item.itemId,
+            (cartItem) => this.getItemKey(cartItem) === key,
         );
 
         if (!existingItem) {
             this.items.push({ ...item, quantity: 1n });
         } else {
             this.items = this.items.map((cartItem) =>
-                cartItem.itemId === item.itemId
+                this.getItemKey(cartItem) === key
                     ? { ...cartItem, quantity: (cartItem.quantity ?? 0n) + 1n }
                     : cartItem,
             );
         }
-        if (item.priceMoney !== undefined) {
-            this.total += BigInt(item.priceMoney.amount);
+
+        // Use the stored item's price to keep the running total consistent
+        const priceItem = existingItem ?? item;
+        if (priceItem.priceMoney !== undefined) {
+            this.total += BigInt(priceItem.priceMoney.amount);
         }
     }
 
     public removeQuantity(item: CartItem) {
-        // console.log("remove quantity");
+        const key = this.getItemKey(item);
         const existingItem = this.items.find(
-            (cartItem) => cartItem.itemId === item.itemId,
+            (cartItem) => this.getItemKey(cartItem) === key,
         );
 
         if (existingItem) {
-            if (
-                existingItem.quantity != undefined &&
-                existingItem.quantity <= 1n
-            ) {
+            if ((existingItem.quantity ?? 0n) <= 1n) {
                 this.removeItem(item);
             } else {
                 this.items = this.items.map((cartItem) =>
-                    cartItem.itemId === item.itemId
+                    this.getItemKey(cartItem) === key
                         ? {
                               ...cartItem,
                               quantity: (cartItem.quantity ?? 0n) - 1n,
                           }
                         : cartItem,
                 );
-                if (item.priceMoney !== undefined) {
-                    this.total -= BigInt(item.priceMoney.amount);
+                // Use the stored item's price for consistency
+                if (existingItem.priceMoney !== undefined) {
+                    this.total -= BigInt(existingItem.priceMoney.amount);
                 }
             }
         }
     }
 
-    //error caused somewhere in here and the recalculating cart that it can't convert a bigint into a numbers
     public removeItem(item: CartItem) {
-        // console.log("remove item");
+        const key = this.getItemKey(item);
         this.items = this.items.filter(
-            (cartItem) => cartItem.itemId !== item.itemId,
+            (cartItem) => this.getItemKey(cartItem) !== key,
         );
         this.recalculateCart();
     }
 
     private recalculateCart() {
-        // console.log("recalculate total from: ", this.total);
-        // console.log(this.items);
         let newTotal: bigint = 0n;
         if (this.items.length === 0) {
             this.total = 0n;
@@ -94,11 +108,8 @@ export class Cart {
                     newTotal +=
                         BigInt(item.priceMoney.amount) * BigInt(item.quantity);
                 }
-
-                // console.log("recalculate total between: ", this.total);
             }
             this.total = BigInt(newTotal);
-            // console.log("recalculate total to: ", this.total);
         }
     }
 }
