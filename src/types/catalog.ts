@@ -7,15 +7,13 @@ export interface ItemSummary {
 
 export interface ItemVariationLocationOverrides {
     locationId?: string | null;
-    priceMoney?: {
-        amount: bigint;
-        currency: string;
-    };
+    priceMoney?: Money;
     pricingType?: "FIXED" | "VARIABLE";
     trackInventory?: boolean | null;
 }
 
 export interface ItemVariation {
+    id?: string | null;
     itemId?: string | null;
     name?: string | null;
     sku?: string | null;

@@ -21,11 +21,7 @@ export type CardBrand =
     | "OTHER_BRAND";
 
 export type CardEntryMethod =
-    | "KEYED"
-    | "SWIPED"
-    | "EMV"
-    | "CONTACTLESS"
-    | "ON_FILE";
+    "KEYED" | "SWIPED" | "EMV" | "CONTACTLESS" | "ON_FILE";
 
 export type PaymentStatus = "AUTHORIZED" | "CAPTURED" | "VOIDED" | "FAILED";
 
@@ -41,18 +37,12 @@ export interface Discount {
     id: string;
     name?: string | null;
     discountType?: DiscountType;
-    amountMoney?: {
-        amount: bigint;
-        currency: string;
-    };
+    amountMoney?: Money;
     percentage?: string | null;
     pinRequired?: boolean | null;
     labelColor?: string | null;
     modifyTaxBasis?: "MODIFY_TAX_BASIS" | "DO_NOT_MODIFY_TAX_BASIS";
-    maximumAmountMoney?: {
-        amount: bigint;
-        currency: string;
-    };
+    maximumAmountMoney?: Money;
 }
 
 export interface Tender {
@@ -94,7 +84,7 @@ export interface Order {
     };
     customerId?: string | null;
     lineItems?: CartItem[] | null;
-    taxes?: null;
+    taxes?: unknown;
     discounts: Discount[];
     netAmount?: {
         totalMoney?: Money;
