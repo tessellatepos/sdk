@@ -1,5 +1,5 @@
 export interface Money {
-    amount?: bigint;
+    amount: bigint;
     currency: CurrencyCode;
 }
 
@@ -11,5 +11,5 @@ export enum CurrencyCode {
     CAD = "CAD",
     AUD = "AUD",
     CNY = "CNY",
-    ZND = "NZD"
+    NZD = "NZD",
 }
