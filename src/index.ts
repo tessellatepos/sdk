@@ -21,9 +21,33 @@ export type {
     CheckoutDetails,
     DeviceType,
     IConfigDevice,
+    Address,
+    Location,
+    LocationHours,
+    TimePeriod,
+    Time,
 } from "./types/index.js";
 
-export { CurrencyCode } from "./types/index.js";
+// Reference data (generated, see data/README.md)
+export {
+    COUNTRIES,
+    POSTAL_CODE_LABELS,
+    SUBDIVISION_LABELS,
+    LOCALITY_LABELS,
+    DEPENDENT_LOCALITY_LABELS,
+} from "./types/countries.js";
+export type {
+    Country,
+    CountryCode,
+    AddressField,
+    SubdivisionCodeOf,
+    PostalCodeType,
+    SubdivisionType,
+    LocalityType,
+    DependentLocalityType,
+} from "./types/countries.js";
+export { CURRENCIES, CURRENCY_COUNTRIES } from "./types/currencies.js";
+export type { CurrencyCode } from "./types/currencies.js";
 
 // Core
 export { Cart } from "./core/cart.js";
@@ -34,6 +58,7 @@ export {
     stripBigints,
     parseMoney,
 } from "./util/bigintReplacer.js";
+export { validateAddress, type AddressError } from "./util/address.js";
 export {
     toBigIntAmount,
     convertCentsToDollars,

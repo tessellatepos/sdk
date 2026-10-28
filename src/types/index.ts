@@ -1,5 +1,4 @@
 export type { Money } from "./money.js";
-export { CurrencyCode } from "./money.js";
 
 export type {
     ItemSummary,
@@ -27,3 +26,7 @@ export type {
 export type { CheckoutMethod, CheckoutDetails } from "./checkout.js";
 
 export type { DeviceType, IConfigDevice } from "./device.js";
+
+export type { Address } from "./address.js";
+
+export type { Location, LocationHours, TimePeriod, Time } from "./location.js";
