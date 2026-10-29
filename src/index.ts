@@ -26,6 +26,22 @@ export type {
     LocationHours,
     TimePeriod,
     Time,
+    ScopeResource,
+    ScopeAction,
+    CoreScope,
+    PluginScope,
+    Scope,
+    Role,
+    PrincipalKind,
+    Principal,
+    ApiError,
+    Customer,
+    CustomerInput,
+    CustomerQuery,
+    CustomerPage,
+    ApiCredential,
+    ApiCredentialInput,
+    ApiCredentialSecret,
 } from "./types/index.js";
 
 // Reference data (generated, see data/README.md)
