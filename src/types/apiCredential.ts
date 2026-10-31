@@ -34,9 +34,14 @@ export type ApiCredentialInput = Pick<
         >
     >;
 
-/** Returned once, when a credential is created or rotated. */
+/**
+ * Returned once, when a credential is created or its secret rotated. Neither
+ * secret is ever returned again. `webhook_secret` signs deliveries to
+ * `webhook_url`.
+ */
 export interface ApiCredentialSecret {
     credential: ApiCredential;
     client_id: string;
     client_secret: string;
+    webhook_secret: string;
 }
