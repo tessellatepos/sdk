@@ -1,10 +1,16 @@
-export type DeviceType = "TERMINAL" | "MOBILE_READER";
+/**
+ * LOCAL is a till that runs in a staff browser. It has no pairing code and no
+ * hardware, and takes cash only.
+ */
+export type DeviceType = "TERMINAL" | "MOBILE_READER" | "LOCAL";
 
 export interface IConfigDevice {
     id: string;
     created_at: Date;
-    pairing_code: string;
-    code_created_at: Date;
+    /** Null for LOCAL devices, which are never paired with a code. */
+    pairing_code: string | null;
+    /** Null for LOCAL devices, which have no pairing code to expire. */
+    code_created_at: Date | null;
     paired_at: Date | null;
     square_location: string | null;
     customer_facing: boolean;
