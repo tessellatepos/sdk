@@ -2,6 +2,7 @@ export type { Money } from "./money.js";
 
 export type {
     ItemSummary,
+    SalesChannel,
     ItemVariation,
     ItemVariationLocationOverrides,
     ItemCategory,
@@ -19,7 +20,7 @@ export type {
     CatalogImportReport,
     CatalogCsvColumn,
 } from "./catalog.js";
-export { CATALOG_CSV_COLUMNS } from "./catalog.js";
+export { CATALOG_CSV_COLUMNS, SALES_CHANNELS } from "./catalog.js";
 
 export type { CartItem } from "./cart.js";
 

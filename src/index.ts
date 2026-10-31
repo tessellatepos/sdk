@@ -2,6 +2,7 @@
 export type {
     Money,
     ItemSummary,
+    SalesChannel,
     ItemVariation,
     ItemVariationLocationOverrides,
     ItemCategory,
@@ -86,7 +87,7 @@ export type {
 export { CURRENCIES, CURRENCY_COUNTRIES } from "./types/currencies.js";
 export type { CurrencyCode } from "./types/currencies.js";
 
-export { CATALOG_CSV_COLUMNS } from "./types/index.js";
+export { CATALOG_CSV_COLUMNS, SALES_CHANNELS } from "./types/index.js";
 export { CORE_SCOPES } from "./types/principal.js";
 
 // Core

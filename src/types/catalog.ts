@@ -1,6 +1,11 @@
 import type { CurrencyCode } from "./currencies.js";
 import type { Money } from "./money.js";
 
+/** Where a catalog item or variation may be sold. */
+export type SalesChannel = "pos" | "online";
+
+export const SALES_CHANNELS: readonly SalesChannel[] = ["pos", "online"];
+
 export interface ItemSummary {
     id: string;
     name?: string | null;
@@ -25,6 +30,11 @@ export interface ItemVariation {
     locationOverrides?: ItemVariationLocationOverrides[] | null;
     trackInventory?: boolean | null;
     parent?: ItemSummary | null;
+    /**
+     * Channels this variation is sold through. Absent means it follows its
+     * item's channels; a variation is only ever sold where its item is too.
+     */
+    channels?: SalesChannel[];
 }
 
 export interface ItemCategory {
@@ -46,6 +56,8 @@ export interface Item {
     isArchived?: boolean | null;
     locationIds?: string[] | null;
     image?: string | null;
+    /** Channels the item is sold through. Absent is read as `["pos"]`. */
+    channels?: SalesChannel[];
 }
 
 export interface ItemCatalog {
@@ -78,6 +90,8 @@ export interface ItemVariationInput {
     priceMoney?: MoneyInput | null;
     trackInventory?: boolean | null;
     locationOverrides?: ItemVariationLocationOverrideInput[];
+    /** Omit to follow the item's channels. */
+    channels?: SalesChannel[];
 }
 
 /** The body of a catalog item create (POST), replace (PUT) or merge (PATCH). */
@@ -88,6 +102,8 @@ export interface ItemInput {
     isTaxable?: boolean;
     isArchived?: boolean;
     image?: string | null;
+    /** Defaults to `["pos"]`. */
+    channels?: SalesChannel[];
     categoryIds?: string[];
     /** Storefronts that sell the item. */
     locationIds?: string[];
@@ -160,6 +176,8 @@ export const CATALOG_CSV_COLUMNS = [
     "locations",
     "taxable",
     "archived",
+    "channels",
+    "variation channels",
 ] as const;
 
 export type CatalogCsvColumn = (typeof CATALOG_CSV_COLUMNS)[number];
