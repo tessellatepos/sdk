@@ -21,6 +21,8 @@ export interface ApiCredential {
     created_by: string;
     created_at: string;
     last_used_at: string | null;
+    /** ISO 8601 when the credential was revoked; absent while it is live. */
+    revoked_at?: string;
 }
 
 export type ApiCredentialInput = Pick<
