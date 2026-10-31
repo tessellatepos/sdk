@@ -54,6 +54,15 @@ export type {
     ApiCredential,
     ApiCredentialInput,
     ApiCredentialSecret,
+    PaymentProcessorCapabilities,
+    PaymentProcessorInfo,
+    CheckoutStatus,
+    InvoiceStatus,
+    OnlinePaymentKind,
+    OnlinePaymentStatus,
+    OrderPaymentStatus,
+    OnlinePayment,
+    ProcessorEvent,
 } from "./types/index.js";
 
 // Reference data (generated, see data/README.md)

@@ -41,6 +41,18 @@ export type { DeviceType, IConfigDevice } from "./device.js";
 
 export type { ProviderId } from "./provider.js";
 
+export type {
+    PaymentProcessorCapabilities,
+    PaymentProcessorInfo,
+    CheckoutStatus,
+    InvoiceStatus,
+    OnlinePaymentKind,
+    OnlinePaymentStatus,
+    OrderPaymentStatus,
+    OnlinePayment,
+    ProcessorEvent,
+} from "./onlinePayment.js";
+
 export type { Address } from "./address.js";
 
 export type { Location, LocationHours, TimePeriod, Time } from "./location.js";
