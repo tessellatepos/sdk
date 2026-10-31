@@ -27,6 +27,8 @@ export type { CheckoutMethod, CheckoutDetails } from "./checkout.js";
 
 export type { DeviceType, IConfigDevice } from "./device.js";
 
+export type { ProviderId } from "./provider.js";
+
 export type { Address } from "./address.js";
 
 export type { Location, LocationHours, TimePeriod, Time } from "./location.js";

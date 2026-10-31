@@ -21,6 +21,7 @@ export type {
     CheckoutDetails,
     DeviceType,
     IConfigDevice,
+    ProviderId,
     Address,
     Location,
     LocationHours,
