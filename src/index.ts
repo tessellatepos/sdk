@@ -7,6 +7,17 @@ export type {
     ItemCategory,
     Item,
     ItemCatalog,
+    MoneyInput,
+    ItemVariationLocationOverrideInput,
+    ItemVariationInput,
+    ItemInput,
+    ItemCategoryInput,
+    ItemQuery,
+    ItemPage,
+    CatalogFieldError,
+    CatalogImportRowResult,
+    CatalogImportReport,
+    CatalogCsvColumn,
     CartItem,
     TenderType,
     CardBrand,
@@ -65,6 +76,8 @@ export type {
 } from "./types/countries.js";
 export { CURRENCIES, CURRENCY_COUNTRIES } from "./types/currencies.js";
 export type { CurrencyCode } from "./types/currencies.js";
+
+export { CATALOG_CSV_COLUMNS } from "./types/index.js";
 
 // Core
 export { Cart } from "./core/cart.js";
