@@ -17,7 +17,7 @@
         "build": "tsc -b",
         "build:data": "node data/scripts/build-countries.mjs && node data/scripts/build-currencies.mjs",
         "fetch:data": "node data/scripts/fetch-address-formats.mjs",
-        "lint": "prettier . && eslint .",
+        "lint": "prettier --check . && eslint .",
         "lint:fix": "prettier . --write && eslint . --fix",
         "prepare": "husky"
     },
