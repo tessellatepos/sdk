@@ -2,6 +2,7 @@
 export type {
     Money,
     ItemSummary,
+    SalesChannel,
     ItemVariation,
     ItemVariationLocationOverrides,
     ItemCategory,
@@ -54,6 +55,15 @@ export type {
     ApiCredential,
     ApiCredentialInput,
     ApiCredentialSecret,
+    PaymentProcessorCapabilities,
+    PaymentProcessorInfo,
+    CheckoutStatus,
+    InvoiceStatus,
+    OnlinePaymentKind,
+    OnlinePaymentStatus,
+    OrderPaymentStatus,
+    OnlinePayment,
+    ProcessorEvent,
 } from "./types/index.js";
 
 // Reference data (generated, see data/README.md)
@@ -77,7 +87,7 @@ export type {
 export { CURRENCIES, CURRENCY_COUNTRIES } from "./types/currencies.js";
 export type { CurrencyCode } from "./types/currencies.js";
 
-export { CATALOG_CSV_COLUMNS } from "./types/index.js";
+export { CATALOG_CSV_COLUMNS, SALES_CHANNELS } from "./types/index.js";
 export { CORE_SCOPES } from "./types/principal.js";
 
 // Core

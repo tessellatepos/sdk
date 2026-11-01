@@ -2,6 +2,7 @@ export type { Money } from "./money.js";
 
 export type {
     ItemSummary,
+    SalesChannel,
     ItemVariation,
     ItemVariationLocationOverrides,
     ItemCategory,
@@ -19,7 +20,7 @@ export type {
     CatalogImportReport,
     CatalogCsvColumn,
 } from "./catalog.js";
-export { CATALOG_CSV_COLUMNS } from "./catalog.js";
+export { CATALOG_CSV_COLUMNS, SALES_CHANNELS } from "./catalog.js";
 
 export type { CartItem } from "./cart.js";
 
@@ -40,6 +41,18 @@ export type { CheckoutMethod, CheckoutDetails } from "./checkout.js";
 export type { DeviceType, IConfigDevice } from "./device.js";
 
 export type { ProviderId } from "./provider.js";
+
+export type {
+    PaymentProcessorCapabilities,
+    PaymentProcessorInfo,
+    CheckoutStatus,
+    InvoiceStatus,
+    OnlinePaymentKind,
+    OnlinePaymentStatus,
+    OrderPaymentStatus,
+    OnlinePayment,
+    ProcessorEvent,
+} from "./onlinePayment.js";
 
 export type { Address } from "./address.js";
 
