@@ -21,6 +21,8 @@ export interface ApiCredential {
     created_by: string;
     created_at: string;
     last_used_at: string | null;
+    /** ISO 8601 when the credential was revoked; absent while it is live. */
+    revoked_at?: string;
 }
 
 export type ApiCredentialInput = Pick<
@@ -34,9 +36,14 @@ export type ApiCredentialInput = Pick<
         >
     >;
 
-/** Returned once, when a credential is created or rotated. */
+/**
+ * Returned once, when a credential is created or its secret rotated. Neither
+ * secret is ever returned again. `webhook_secret` signs deliveries to
+ * `webhook_url`.
+ */
 export interface ApiCredentialSecret {
     credential: ApiCredential;
     client_id: string;
     client_secret: string;
+    webhook_secret: string;
 }

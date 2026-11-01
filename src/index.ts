@@ -78,6 +78,7 @@ export { CURRENCIES, CURRENCY_COUNTRIES } from "./types/currencies.js";
 export type { CurrencyCode } from "./types/currencies.js";
 
 export { CATALOG_CSV_COLUMNS } from "./types/index.js";
+export { CORE_SCOPES } from "./types/principal.js";
 
 // Core
 export { Cart } from "./core/cart.js";
