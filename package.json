@@ -27,8 +27,12 @@
             "prettier --write"
         ]
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tessellatepos/sdk.git"
+    },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
+        "access": "public"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.5",
