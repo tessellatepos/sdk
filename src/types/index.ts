@@ -7,7 +7,19 @@ export type {
     ItemCategory,
     Item,
     ItemCatalog,
+    MoneyInput,
+    ItemVariationLocationOverrideInput,
+    ItemVariationInput,
+    ItemInput,
+    ItemCategoryInput,
+    ItemQuery,
+    ItemPage,
+    CatalogFieldError,
+    CatalogImportRowResult,
+    CatalogImportReport,
+    CatalogCsvColumn,
 } from "./catalog.js";
+export { CATALOG_CSV_COLUMNS } from "./catalog.js";
 
 export type { CartItem } from "./cart.js";
 
