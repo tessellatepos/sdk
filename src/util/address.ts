@@ -11,8 +11,8 @@ export type AddressError = {
 };
 
 const valueOf = (address: Address, field: AddressField) =>
-    (field === "address_lines"
-        ? address.address_line_1
+    (field === "addressLines"
+        ? address.addressLine1
         : address[field]
     )?.trim() ?? "";
 
@@ -23,13 +23,13 @@ export function validateAddress(address: Address): AddressError[] {
         .filter((field) => !valueOf(address, field))
         .map((field) => ({ field, reason: "required" }));
 
-    const postalCode = valueOf(address, "postal_code").toUpperCase();
+    const postalCode = valueOf(address, "postalCode").toUpperCase();
     if (
         postalCode &&
         country.postalCodePattern &&
         !new RegExp(country.postalCodePattern).test(postalCode)
     )
-        errors.push({ field: "postal_code", reason: "invalid" });
+        errors.push({ field: "postalCode", reason: "invalid" });
 
     const subdivision = valueOf(address, "subdivision");
     if (
