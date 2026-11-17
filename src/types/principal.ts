@@ -6,6 +6,7 @@ export type ScopeResource =
     | "locations"
     | "devices"
     | "users"
+    | "members"
     | "credentials"
     | "dashboard"
     | "settings"
@@ -40,7 +41,8 @@ export const CORE_SCOPES = [
 /** Roles the host ships. Roles map to scopes; endpoints check scopes. */
 export type Role = "owner" | "manager" | "cashier" | "viewer";
 
-export type PrincipalKind = "user" | "device" | "credential" | "service";
+export type PrincipalKind =
+    "user" | "device" | "credential" | "service" | "member";
 
 /**
  * Who is making a request, resolved once by the auth layer.
@@ -54,6 +56,11 @@ export interface Principal {
     roles: string[];
     scopes: Scope[];
     location_ids: string[] | "all";
+    /**
+     * For a "member" principal, the plugin whose member login issued the
+     * session. A member holds only that plugin's `plugin:<name>:member` scope.
+     */
+    plugin?: string;
 }
 
 /** The error body every API endpoint returns. */

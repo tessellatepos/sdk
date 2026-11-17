@@ -78,6 +78,15 @@ export type {
 } from "./customer.js";
 
 export type {
+    Member,
+    MemberPage,
+    MemberPatch,
+    MemberQuery,
+    MemberSignupPolicy,
+    MemberStatus,
+} from "./member.js";
+
+export type {
     ApiCredential,
     ApiCredentialInput,
     ApiCredentialSecret,
