@@ -1,4 +1,5 @@
 import type { CartItem } from "../types/cart.js";
+import type { Money } from "../types/money.js";
 
 export class Cart {
     protected items: CartItem[];
@@ -85,6 +86,16 @@ export class Cart {
                 }
             }
         }
+    }
+
+    public setItemPrice(item: CartItem, priceMoney: Money) {
+        const key = this.getItemKey(item);
+        this.items = this.items.map((cartItem) =>
+            this.getItemKey(cartItem) === key
+                ? { ...cartItem, priceMoney: { ...priceMoney } }
+                : cartItem,
+        );
+        this.recalculateCart();
     }
 
     public removeItem(item: CartItem) {
