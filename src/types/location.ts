@@ -6,11 +6,11 @@ export interface Location {
     name: string;
     address: Address;
     currency: CurrencyCode;
-    phone_number: string;
-    website_url: string;
+    phoneNumber: string;
+    websiteUrl: string;
     email: string;
     hours: LocationHours;
-    logo_url: string;
+    logoUrl: string;
 }
 
 export interface LocationHours {
